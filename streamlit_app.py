@@ -46,14 +46,6 @@ except URLError as e:
     
 streamlit.write('The user entered ', fruit_choice)
 
-
-# take the json version of the response and normalize it
-#output it the screen as a table
-#don´t run anything past here while we troubeshoot
-
-streamlit.stop()
-
-
 my_cur = my_cnx.cursor()
 my_cur.execute("select * from fruit_load_list")
 
@@ -63,6 +55,12 @@ def get_fruit_load_list():
     with my_cnx.cursor()as my_cur:
          my_cur.execute("select * from fruit_load_list")
          return my_cur.fetchall()
+    
+    # take the json version of the response and normalize it
+#output it the screen as a table
+#don´t run anything past here while we troubeshoot
+
+streamlit.stop()
     
 # Add a button to load the fruit
 if streamlit.button('Get Fruit Load List'):
